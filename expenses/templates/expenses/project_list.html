@@ -1,0 +1,46 @@
+{% extends 'expenses/base.html' %}
+{% block content %}
+
+<section id="project-list">
+    <div class="container-1">
+        <h1>My Projects</h1>
+        {% if project_ev == True %}
+            {% for project in project_list%}
+            <div class="project">
+                <div class="iconn"><a onclick= "deleteExpense(this)" data-id="{{ project.id}}"><i class="close icon"></i></a></div>
+                <h2>{{project.name}}</h2>
+                <a href="{%url 'detail' project.slug%}"><button class="ui secondary button"> <span class="bold">Visit</span> </button></a>
+                <h4>Created by: {{project.autor}}</h4>
+            </div>
+            {% endfor %}
+            <a class="spec" href="add"><button class="ui secondary button"><i class="plus icon"></i> <span class="bold">Create Project</span> </button></a>
+            
+        {%else%}
+            <div class="project-2">
+                    <h3>Sorry, you don't have any projects,yet.</h3><a href="add">
+                    <button class="ui secondary button"><i class="plus icon"></i> <span class="bold">Create Project</span> </button></a>
+            </div>
+        {%endif%}
+    </div>
+        
+    </div>
+    
+    
+</section>
+<script>
+function deleteExpense(e){
+  let id = e.dataset.id
+  e.closest(".project").remove()
+  fetch('',{
+    method: 'DELETE',
+    headers: {
+      'X-CSRFToken': '{{ csrf_token }}'
+    },
+    body: JSON.stringify({
+      'id':id
+    }),
+    credentials:'same-origin',
+  })
+}
+</script>
+{% endblock content %}

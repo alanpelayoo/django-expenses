@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@700&display=swap');
+
+body{
+    background-image: linear-gradient(45deg,#3EB489, white) ; /* */
+}
+.nav-bar{
+    display: flex;
+    
+    height: 60px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color:black;
+    
+    
+    
+}
+.nav-bar .title {
+    padding: 3px 7px;
+    
+}
+
+.nav-bar .title h1{
+    font-weight: 700;
+    font-size: 2.4rem;
+}
+.nav-bar .logo h3 {
+    font-family: 'MuseoModerno', cursive;
+    
+}
+
+.nav-bar .icons {
+    font-size: 130%;
+}
+.footer{
+    display: flex;
+    height: 60px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: black;
+    position: absolute;
+    bottom: 0px;   
+}
+.footer .text {
+    
+    padding: 3px;
+}
+.footer .text h2{
+    font-size: 1rem;
+    font-weight: 300;
+    
+}
+/* Project List section */
+#project-list .container-1{
+    margin-top: 25vh;
+    margin-left: 60px;
+    margin-right: 60px;
+    border: 4px solid black;
+    border-style: dashed;
+    padding: 60px 0px;
+}
+/* End Project List Section */
+
+/* <section id="project-list">
+    <div class="container-1">
+        <div class="ui center aligned container">
+                <h3>Sorry, you don't have any projects,yet.</h3>
+                <button class="ui secondary button"><i class="plus icon"></i> <span class="bold">Add Project</span> </button>
+        </div>
+    </div>
+</section> */

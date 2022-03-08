@@ -1,0 +1,24 @@
+{% extends 'expenses/base.html' %}
+{% block content %}
+
+<section id="project-add">
+    <div class="container-1">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="project">
+                <h3>Project Name</h3>
+                {{ form.name }}
+            </div>
+            <div class="project">
+                <h3>Autor</h3>
+                {{ form.autor }}
+            </div>
+            <button type="submit" class="ui secondary button"><i class="plus icon"></i> <span class="bold">Add Project</span> </button>
+        </form>
+        
+    </div>
+    
+</section>
+
+
+{% endblock content %}

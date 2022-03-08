@@ -1,0 +1,68 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Gastos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"  href="{% static 'expenses/css/style.css' %}">
+   
+</head>
+
+
+<body>
+    <section id="base">
+        <div class="nav-bar">
+            <div class="logo">
+                
+                <h3>APcodes</h3>
+            </div>
+            
+            <div class="icons">
+                <a href="/"><i class=" home icon"></i></a> 
+                <a href="https://github.com/alanpelayoo" target="_blank"><i class="github icon"></i></a>
+            </div>
+        </div>
+        
+       
+        {% if messages %}
+            <div class="msgs">
+                {% for message in messages %}
+                    {% if message.tags == 'success'%}
+                        <div class="ui green message"><i class="close icon"></i><div class="header">Bien.</div><p>{{message}}<p></div>
+                    {% elif message.tags == 'info'%}
+                        <div class="ui message"><i class="close icon"></i><div class="header">Disculpa.</div><p>{{message}}<p></div>
+                    {% elif message.tags == 'warning'%}
+                        <div class="ui red message"><i class="close icon"></i><div class="header">Uff.</div><p>{{message}}<p></div>
+                    {% elif message.tags == 'error'%}
+                        <div class="ui red message"><i class="close icon"></i><div class="header">Uff.</div><p>{{message}}<p></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+        <div class="space-1"></div>
+        <div class="footer">
+            <div class="text">
+                <h2> Created and Designed by Alan Pelayo 2022 ©</h2>
+            </div>
+            <a class="ui teal  image label">
+                <img src="{% static 'expenses/images/ppfoto.jpg' %}">
+                Alan
+                <div class="detail">Creator</div>
+            </a>
+        </div>
+        
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>$('.message .close').on('click',function(){$(this).closest('.message').transition('fade');});</script>`
+</body>
+
+
+</html>

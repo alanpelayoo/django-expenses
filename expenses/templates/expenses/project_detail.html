@@ -1,0 +1,80 @@
+{% extends 'expenses/base.html' %}
+{% block content %}
+
+<section id="project-detail">
+    <div class="tit"><h2>{{project.name}}</h2></div>
+    <div class="results">
+        <div class="space first">
+            <div class="text"><h1>Paid</h1> <i class="big arrow alternate circle down outline icon"></i></div>
+            <div class="quanty"><h1>${{project.paid}}</h1></div>
+        </div>
+        <div class="space second ">
+            <div class="text"><h1>Unpaid</h1> <i class="big arrow alternate circle up outline icon"></i></div>
+            <div class="quanty"><h1>${{project.unpaid}}</h1></div>
+        </div>
+        <div class="space third">
+            <div class="text"><h1>Total</h1> <i class="big exchange icon"></i></div>
+            <div class="quanty"><h1>${{project.total}}</h1></div>
+        </div>
+    </div>
+    <div class="expenses">
+       <div class="row"><button id="trigger" class="ui secondary button"><i class="plus icon"></i> <span class="bold">Add Expense</span> </button>
+      </div>
+      {% if expense_ev == True %}
+        <ul>
+          {%for expense in expense_list%}
+          <li>
+            <div class="row-2">
+              <div class="concept"><h3>{{expense.title}}</h3></div>
+              <div class="quantity"><h3>$ {{expense.amount}}</h3></div>
+              <div class="description"><h3>{{expense.category.name}}</h3></div>
+              <div class="iconn"><a onclick= "deleteExpense(this)" data-id="{{ expense.id}}"><i class="close icon"></i></a></div>
+              </div>
+          </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="bg-modal">
+      <div class="modal-content">
+        <h2> Add Expense</h2>
+        <i id="close-i" class="big close icon"></i>
+        <form method="POST">
+          {% csrf_token %}
+          <input type="text" name="title" id="title" placeholder="Concepto">
+          <input type="text" name="amount" id="amount" placeholder="Cantidad">
+          <select name="category">
+            {% for category in category_list %}
+              <option>{{ category.name }}</option>
+            {% endfor %}
+          </select>
+          <button class="ui button" type="submit">Add</button>
+        </form>
+      </div>
+    </div>
+</section>
+<script>
+document.getElementById('trigger').addEventListener('click',function(){
+  document.querySelector('.bg-modal').style.display='flex';
+});
+document.getElementById('close-i').addEventListener('click',function(){
+  document.querySelector('.bg-modal').style.display='none';
+});
+
+function deleteExpense(e){
+  let id = e.dataset.id
+  e.closest('li').remove()
+  fetch('',{
+    method: 'DELETE',
+    headers: {
+      'X-CSRFToken': '{{ csrf_token }}'
+    },
+    body: JSON.stringify({
+      'id':id
+    }),
+    credentials:'same-origin',
+  })
+}
+</script>
+
+{% endblock content %}
