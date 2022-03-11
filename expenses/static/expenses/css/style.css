@@ -152,7 +152,7 @@ body{
 }
 #project-detail .space{
     margin: 5px;
-    min-width: 190px;
+    min-width: 100px;
     height: 130px;
     border-radius: 10px;
     display: flex;
@@ -333,6 +333,8 @@ body{
     justify-content: center;
     text-align: center;
     min-height: 82vh;
+    width: 100%;
+    
 }
 #project-add .project{
     display: flex;
@@ -340,10 +342,10 @@ body{
     align-items: center;
     justify-content: center;
     border: 2px black solid;
-    
+    width: 70%;
     box-shadow: 5px 5px;
     padding: 10px 10px;
-    margin: 10px;
+    margin: 10px auto;
     border-radius: 4px;
 }
 
@@ -359,5 +361,6 @@ body{
     background-color: white;
     padding: 5px;
     font-size: 1.5rem;
+    width: 70%;
 }
 /* End Start Project */
