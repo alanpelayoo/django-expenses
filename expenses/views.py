@@ -9,6 +9,7 @@ from .models import Project,Category,Expense
 from django.views.generic import CreateView
 from .forms import ExpenseForm
 import json
+
 def projects_list(request):
     project_ev = Project.objects.exists()
     project_list = Project.objects.all()
